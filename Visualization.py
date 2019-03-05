@@ -19,7 +19,15 @@ def region_plot(regions, flag, ax, num):
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
     plt.gca().set_aspect('equal', adjustable='box')
-    plt.grid(b=True, which='major', color='k', linestyle='--')
+    # plt.grid(b=True, which='major', color='k', linestyle='--')
+
+    ymin, ymax = ax.get_ylim()
+    xmin, xmax = ax.get_xlim()
+    for y in np.linspace(ymin, ymax, num=num, endpoint=False):
+        ax.hlines(y=y, xmin=xmin, xmax=xmax, color='#e0e0eb')
+    for x in np.linspace(xmin, xmax, num=num, endpoint=False):
+        ax.vlines(x=x, ymin=ymin, ymax=ymax, color='#e0e0eb')
+
     for key in regions.keys():
         coords = list(regions[key].exterior.coords)
         if len(coords)>10:
@@ -40,13 +48,6 @@ def region_plot(regions, flag, ax, num):
             p = PatchCollection(patches, facecolors=color, edgecolors=color)
             ax.add_collection(p)
             ax.text(np.mean(x), np.mean(y), r'${}_{}$'.format(key[0], key[1:]), fontsize=16)
-
-    ymin, ymax = ax.get_ylim()
-    xmin, xmax = ax.get_xlim()
-    for y in np.linspace(ymin, ymax, num=num, endpoint=False):
-        ax.hlines(y=y, xmin=xmin, xmax=xmax, color='k')
-    for x in np.linspace(xmin, xmax, num=num, endpoint=False):
-        ax.vlines(x=x, ymin=ymin, ymax=ymax, color='k')
 
 
 def path_plot(path, regions, obs, num_grid):

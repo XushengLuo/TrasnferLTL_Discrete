@@ -284,7 +284,7 @@ class buchi_graph(object):
 
     def FeasAcpt(self, min_qb):
         """
-        delte infeasible final state
+        deelte infeasible final state
         :param buchi_graph: buchi automaton
         :param min_qb: dict of pairs of node : length of path
         """

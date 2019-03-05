@@ -266,7 +266,6 @@ class tree(object):
             s = goal
             while s != self.init:
                 s = list(self.tree.pred[s].keys())[0]
-
                 path.insert(0, s)
             paths[i] = [self.tree.nodes[goal]['cost'], path]
         return paths
@@ -284,17 +283,26 @@ def construction_tree(subtree, x_new, label_new, buchi_graph, centers, h_task, f
     succ = [sc.xq() for sc in h_task.succ[curr]]
     # iterate over each buchi state
     for b_state in buchi_graph.nodes():
+
         # new product state
         q_new = (x_new, b_state)
 
-        # candidate parent state
-        prec = subtree.prec(q_new, label_new, obs_check)
-        # extend
-        added = subtree.extend(q_new, prec, succ, label_new)
+        if q_new not in subtree.tree.nodes():
+            # candidate parent state
+            prec = subtree.prec(q_new, label_new, obs_check)
+            # extend
+            # no need to consider update the cost and acc of other subtrees since connect_root handles it
+            # succ = set(todo_succ.keys())
+            # succ.remove(subtree.init)
+            added = subtree.extend(q_new, prec, succ, label_new)
+
         # rewire
-        if added:
+        if q_new in subtree.tree.nodes():
+            # print(q_new)
+            # only rewire within the subtree, it may affect the node which is a root
             succ = subtree.succ(q_new, label_new, obs_check)
             subtree.rewire(q_new, succ)
+
             if flag:
                 construction_tree_connect_root(subtree, q_new, label_new, centers, h_task, connect, obs_check)
 
@@ -401,9 +409,12 @@ def multi_trees(h_task, buchi_graph, ts, centers, max_node, num):
                 construction_tree(multi_tree[i], x_new, label, buchi_graph, centers, h_task, 0, connect, obs_check_dict)
             else:
                 construction_tree(multi_tree[i], x_new, label, buchi_graph, centers, h_task, 1, connect, obs_check_dict)
-
+    print(len(connect))
+    k = 0
     end2path = dict()
     for pair in connect:
+        k = k + 1
+        print(k)
         for t in range(len(multi_tree)):
             if multi_tree[t].tree.graph['init'] == pair[0].xq():
                 end2path[pair] = multi_tree[t].findpath([pair[1].xq()])[0][1]

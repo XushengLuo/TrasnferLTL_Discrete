@@ -3,7 +3,7 @@ from datetime import datetime
 from Constree import tree
 import random
 from networkx.algorithms import dfs_labeled_edges
-from DetectReuse import replace
+from DetectReuse_1st import replace
 from collections import OrderedDict
 
 
@@ -68,6 +68,32 @@ def update(curr, succ, path, starting2waypoint, subtask2path, newsubtask2subtask
             starting2waypoint[subtask[0]].add((subtask[0], subtask[1]))
         else:
             starting2waypoint[subtask[0]] = {(subtask[0], subtask[1])}
+
+
+def root_check_subtask(subtree, parent_node, subtask2path, starting2waypoint, sample_list, obs_check):
+    """
+    check whether the root can be connected to the existing subpath
+    :param subtree:
+    :param parent_node:
+    :param subtask2path:
+    :param starting2waypoint:
+    :param sample_list:
+    :return:
+    """
+
+    # check whether parent node can be connected to existing subpath
+    # obs_check: return a dictionary
+    for starting in starting2waypoint.keys():
+        if parent_node == starting:
+            subtree.used.add(starting)
+            # print(len(trans er_tree.used))
+            for subtask in starting2waypoint[starting]:
+                a = subtask2path[subtask].copy()
+                sample_list.append(a)
+                # combine elemental subtask to larger one
+                # print('start')
+                sweep_subtask(sample_list, starting2waypoint, subtask2path, subtree)
+                # print('ends')
 
 
 def check_subtask(subtree, parent_node, subtask2path, starting2waypoint, sample_list, obs_check):
@@ -420,12 +446,12 @@ def construction_tree_connect_sample(subtree, sample_list, multi_tree, init, roo
 
     # print('construction_tree_connect_sample')
     # extend towards to other sample points
-    for k in range(1, len(sample_list)-1):
+    for k in range(1, len(sample_list) - 1):
         cand = sample_list[k]
 
         # not in the set of nodes of the tree
         cost = subtree.tree.nodes[sample_list[k - 1]]['cost'] + \
-                np.abs(sample_list[k - 1][0][0] - cand[0][0]) + np.abs(sample_list[k - 1][0][1] - cand[0][1])
+               np.abs(sample_list[k - 1][0][0] - cand[0][0]) + np.abs(sample_list[k - 1][0][1] - cand[0][1])
         if cand not in subtree.tree.nodes():
             # extend-like
             # if 'accept' in cand[1]:
@@ -461,10 +487,10 @@ def construction_tree_connect_sample(subtree, sample_list, multi_tree, init, roo
                             # connect the second to last to other roots
         if k == len(sample_list) - 2:
             construction_tree_connect_root(subtree, sample_list[k],
-                                                   subtree.tree.nodes[sample_list[k]]['label'],
-                                                   centers, todo_succ, connect,
-                                                   starting2waypoint, subtask2path, newsubtask2subtask_p, root2index,
-                                                   root_pred2index_node, index2node_root, multi_tree, init, obs_check)
+                                           subtree.tree.nodes[sample_list[k]]['label'],
+                                           centers, todo_succ, connect,
+                                           starting2waypoint, subtask2path, newsubtask2subtask_p, root2index,
+                                           root_pred2index_node, index2node_root, multi_tree, init, obs_check)
 
 
 def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, subtask2path, starting2waypoint,
@@ -511,15 +537,15 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
         root2index[init] = root_index
         root_index += 1
 
-    # accept
-    # for ac in acpt:
-    #     if ac not in root2index.keys():
-    #         print(ac)
-            # multi_tree.append(tree(ts, buchi_graph, ac, base))
-            # multi_tree[-1].tree.nodes[ac]['cost'] = base
-            # root2index[ac] = root_index
-            # root_index += 1
-            # todo_succ[ac] = set()
+        # accept
+        # for ac in acpt:
+        #     if ac not in root2index.keys():
+        #         print(ac)
+        # multi_tree.append(tree(ts, buchi_graph, ac, base))
+        # multi_tree[-1].tree.nodes[ac]['cost'] = base
+        # root2index[ac] = root_index
+        # root_index += 1
+        # todo_succ[ac] = set()
 
     index2node_root = {i: set() for i in range(len(multi_tree))}  # index -->  node and successive root
     print('number of subtress        : %8d' % len(multi_tree))
@@ -527,9 +553,21 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
     c = 0
     k = 0
     s = 0
+    threshold = 0
     connect = set()
     # for n in range(n_max):
     now = datetime.now()
+    # find whether the root can connect to any skill
+    for i in range(len(multi_tree)):
+        sample_list = []
+        root_check_subtask(multi_tree[i], multi_tree[i].init, subtask2path, starting2waypoint, sample_list, obs_check)
+        if sample_list:
+            for sample in sample_list:
+                construction_tree_connect_sample(multi_tree[i], sample, multi_tree, init,
+                                                 root_pred2index_node, root2index, centers,
+                                                 todo_succ, connect, starting2waypoint, subtask2path,
+                                                 newsubtask2subtask_p, index2node_root, obs_check)
+
     while np.sum([t.tree.number_of_nodes() for t in multi_tree]) < max_node:
 
         if int(np.sum([t.tree.number_of_nodes() for t in multi_tree]) / 1000) > k:
@@ -545,12 +583,12 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
         if label != '':
             label = label + '_' + str(1)
         s += 1
-        # print(s)
+
         # print(i, [t.tree.number_of_nodes() for t in multi_tree])
         # print([t.init for t in multi_tree])
         for i in range(len(multi_tree)):
-        # if i > -1:
-            if np.sum([len(t.goals) for t in multi_tree]) > 100:
+            # if i > -1:
+            if np.sum([len(t.goals) for t in multi_tree]) > threshold:
                 break
             if np.sum([t.tree.number_of_nodes() for t in multi_tree]) < c * max_node:  # 0 is better
                 sample_list = construction_tree(multi_tree[i], x_new, label, buchi_graph, centers, todo_succ, 0,
@@ -569,24 +607,23 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
                                                      todo_succ, connect, starting2waypoint, subtask2path,
                                                      newsubtask2subtask_p, index2node_root, obs_check)
 
+        if np.sum([len(t.goals) for t in multi_tree]) > threshold:
+            break
 
 
+            # for s in range(len(sample)-1):
+            #     sample_list += construction_tree(multi_tree[i], sample[s+1][0], buchi_graph, centers, todo_succ, 0, connect,
+            #                                 subtask2path, starting2waypoint, newsubtask2subtask_p, root2index,
+            #                                 root_pred2index_node, index2node_root, multi_tree, init, [sample[s]])
 
-    print(np.sum(len(t.goals) for t in multi_tree))
-
-                    # for s in range(len(sample)-1):
-                    #     sample_list += construction_tree(multi_tree[i], sample[s+1][0], buchi_graph, centers, todo_succ, 0, connect,
-                    #                                 subtask2path, starting2waypoint, newsubtask2subtask_p, root2index,
-                    #                                 root_pred2index_node, index2node_root, multi_tree, init, [sample[s]])
-
-                    # roots connected to init root
-                    # for root in root2index.keys():
-                    #     index = [root2index[nr[1]] for nr in index2node_root[root2index[root]]]
-                    #     if index:
-                    #         print(root2index[init])
-                    #         print(root2index[root], index)
-                    #         print(root2index[root], [root_pred2index_node[multi_tree[i].init][0] for i in index])
-                    # print('===================')
+            # roots connected to init root
+            # for root in root2index.keys():
+            #     index = [root2index[nr[1]] for nr in index2node_root[root2index[root]]]
+            #     if index:
+            #         print(root2index[init])
+            #         print(root2index[root], index)
+            #         print(root2index[root], [root_pred2index_node[multi_tree[i].init][0] for i in index])
+            # print('===================')
     time2 = (datetime.now() - now).total_seconds()
     # print(time2, np.sum([len(v) for k, v in todo_succ.items()]), len(connect))
     # for c in connect:
@@ -615,4 +652,4 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
                 optpath = path
             k += 1
     # print(time1, time2, num_path_seq, num_path_par)
-    return optpath
+    return optpath, optcost
