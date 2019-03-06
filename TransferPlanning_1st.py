@@ -576,7 +576,6 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
         i = np.random.randint(len(multi_tree), size=1)[0]
         # i = [t.tree.number_of_nodes()for t in multi_tree].index(min([t.tree.number_of_nodes()for t in multi_tree]))
         x_new = multi_tree[i].sample(num_grid)
-
         label = multi_tree[0].label(x_new)
         if 'o' in label:
             continue

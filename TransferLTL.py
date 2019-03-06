@@ -23,6 +23,8 @@ def ftodo(todo):
 def sub(subtask):
     for t in subtask.keys():
         print(t[0], t[1])
+
+
 # # =========================================================================
 # start1 = datetime.datetime.now()
 #
@@ -45,20 +47,21 @@ def sub(subtask):
 # # # |        synthesize reusable skills        |
 # # # +------------------------------------------+
 # # roots for reusable skills
-# h_task_lib = hoftask((1 / num_grid / 2, 1 / num_grid / 2), buchi_graph, centers, 1 / num_grid)
+# h_task_lib = hoftask((round(1 / num_grid / 2, 10), round(1 / num_grid / 2, 10)), buchi_graph, centers,
+#                      round(1 / num_grid, 10))
 # time1 = (datetime.datetime.now() - start1).total_seconds()
 # #
 # start2 = datetime.datetime.now()
-# end2path = multi_trees(h_task_lib, buchi_graph, ts, centers, 3000, num_grid)
+# end2path = multi_trees(h_task_lib, buchi_graph, ts, centers, 150000, num_grid)
 # time2 = (datetime.datetime.now() - start2).total_seconds()
 #
 # for key, value in end2path.items():
 #     path_plot(value, regions, obs, num_grid)
-
+#
 # with open('data/lib_subtask123456_20*20_more_1st', 'wb+') as filehandle:
-#         # store the data as binary data stream
-#         pickle.dump(end2path, filehandle)
-#         pickle.dump(h_task_lib, filehandle)
+#     # store the data as binary data stream
+#     pickle.dump(end2path, filehandle)
+#     pickle.dump(h_task_lib, filehandle)
 # # =========================================================================
 
 # +------------------------------------------+
@@ -95,14 +98,12 @@ with open('data/lib_subtask123456_20*20_more_1st', 'rb') as filehandle:
     end2path = pickle.load(filehandle)
     h_task_lib = pickle.load(filehandle)
 
-end2path[
-    (State(((0.8250000000000001, 0.8250000000000001), 'T0_init'), to_dnf('1')),
-     State(((0.225, 0.8250000000000001), 'T0_S17'), to_dnf('1')))] = [
-    ((0.8250000000000001, 0.8250000000000001),
-     'T0_init'), ((0.8250000000000001, 0.8250000000000001),
-                  'T0_S17'), ((0.8250000000000001, 0.675), 'T0_S17'), ((0.275, 0.675),
-                                                                       'T0_S17'), ((0.225, 0.675), 'T0_S17'),
-    ((0.225, 0.8250000000000001), 'T0_S17')]
+# end2path[
+#     (State(((0.825, 0.825), 'T0_init'), to_dnf('1')),
+#      State(((0.225, 0.825), 'T0_S17'), to_dnf('1')))] = [
+#     ((0.825, 0.825), 'T0_init'), ((0.825, 0.825), 'T0_S17'),
+#     ((0.825, 0.675), 'T0_S17'), ((0.275, 0.675), 'T0_S17'),
+#     ((0.225, 0.675), 'T0_S17'), ((0.225, 0.825), 'T0_S17')]
 
 # +------------------------------------------+
 # |         detect reusable skills           |
@@ -121,23 +122,27 @@ print('number of total subtasks  : %6d' % (h_task_new.number_of_edges()))
 print('ratio                     : %8.2f' % (len(subtask2path) / h_task_new.number_of_edges()))
 n_max = 15000
 time = []
+cost = []
+opt_cost = np.inf
+opt_path = []
 # ==================================================================
 for i in range(10):
     print('-------------- MultiSubtree ---- {0} time ---------------'.format(i + 1))
     start4 = datetime.datetime.now()
-    optpath, optcost = transfer_multi_trees(buchi_graph, (init_pos, buchi_graph.graph['init'][0]), todo_succ, ts,
+    p, c = transfer_multi_trees(buchi_graph, (init_pos, buchi_graph.graph['init'][0]), todo_succ, ts,
                                             centers,
                                             n_max, subtask2path, starting2waypoint, newsubtask2subtask_p, acpt,
                                             num_grid, obs_check=dict())
+    if c == np.inf:
+        continue
     time4_transfer = (datetime.datetime.now() - start4).total_seconds()
-    print(time4_transfer, optcost)
     time.append(time4_transfer)
-    if optpath:
-        p = []
-        for point in optpath:
-            p.append(tree.label(point))
-            # print(p)
-            # path_plot(optpath, regions, obs, num_grid)
-            # break
-            # ==================================================================
-print(np.mean(time), time)
+    print(time4_transfer, c)
+    cost.append(c)
+
+    if c < opt_cost:
+        opt_path = p
+        opt_cost = c
+# ==================================================================
+print('time: {0}, cost: {1}, best cost: {2}'.format(np.mean(time), np.mean(cost), opt_cost))
+path_plot(opt_path, regions, obs, num_grid)

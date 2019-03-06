@@ -57,9 +57,9 @@ class tree(object):
         line = np.random.randint(2, size=1)[0]
         x_rand[line] = q_rand[0][line]
         # sample another component
-        r = 1/num
+        r = round(1/num,10)
         # x_rand[1-line] = int(np.random.uniform(0, 1, size=1)[0]/r) * r + r/2
-        x_rand[1-line] = np.random.randint(num, size=1)[0] * r + r/2
+        x_rand[1-line] = round(np.random.randint(num, size=1)[0] * r + r/2, 10)
         return tuple(x_rand)
 
     def acpt_check(self, q_min, q_new):

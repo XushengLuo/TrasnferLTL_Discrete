@@ -39,52 +39,57 @@ class problemFormulation(object):
         self.ap = {'l1', 'l2', 'l3', 'l4', 'l5', 'l6'}
         center = [(0.2, 0.8), (0.8, 0.8), (0.8, 0.4), (0.4, 0.4), (0.1, 0.2), (0.1, 0.5)]
 
-        self.centers = {'l1': (center[0][0] + mul * r / 2, center[0][1] + mul * r / 2),
-                        'l2': (center[1][0] + mul * r / 2, center[1][1] + mul * r / 2),
-                        'l3': (center[2][0] + mul * r / 2, center[2][1] + mul * r / 2),
-                        'l4': (center[3][0] + mul * r / 2, center[3][1] + mul * r / 2),
-                        'l5': (center[4][0] + mul * r / 2, center[4][1] + mul * r / 2),
-                        'l6': (center[5][0] + mul * r / 2, center[5][1] + mul * r / 2)
+        self.centers = {'l1': (round(center[0][0] + mul * r / 2, 10), round(center[0][1] + mul * r / 2, 10)),
+                        'l2': (round(center[1][0] + mul * r / 2, 10), round(center[1][1] + mul * r / 2, 10)),
+                        'l3': (round(center[2][0] + mul * r / 2, 10), round(center[2][1] + mul * r / 2, 10)),
+                        'l4': (round(center[3][0] + mul * r / 2, 10), round(center[3][1] + mul * r / 2, 10)),
+                        'l5': (round(center[4][0] + mul * r / 2, 10), round(center[4][1] + mul * r / 2, 10)),
+                        'l6': (round(center[5][0] + mul * r / 2, 10), round(center[5][1] + mul * r / 2, 10))
                         }
 
-        self.regions = {'l1': Polygon([center[0], (center[0][0] + mul * r, center[0][1]),
-                                       (center[0][0] + mul * r, center[0][1] + mul * r),
-                                       (center[0][0], center[0][1] + mul * r)]),
-                        'l2': Polygon([center[1], (center[1][0] + mul * r, center[1][1]),
-                                       (center[1][0] + mul * r, center[1][1] + mul * r),
-                                       (center[1][0], center[1][1] + mul * r)]),
-                        'l3': Polygon([center[2], (center[2][0] + mul * r, center[2][1]),
-                                       (center[2][0] + mul * r, center[2][1] + mul * r),
-                                       (center[2][0], center[2][1] + mul * r)]),
-                        'l4': Polygon([center[3], (center[3][0] + mul * r, center[3][1]),
-                                       (center[3][0] + mul * r, center[3][1] + mul * r),
-                                       (center[3][0], center[3][1] + mul * r)]),
-                        'l5': Polygon([center[4], (center[4][0] + mul * r, center[4][1]),
-                                       (center[4][0] + mul * r, center[4][1] + mul * r),
-                                       (center[4][0], center[4][1] + mul * r)]),
-                        'l6': Polygon([center[5], (center[5][0] + mul * r, center[5][1]),
-                                       (center[5][0] + mul * r, center[5][1] + mul * r),
-                                       (center[5][0], center[5][1] + mul * r)])
+        self.regions = {'l1': Polygon([center[0], (round(center[0][0] + mul * r, 10), round(center[0][1], 10)),
+                                       (round(center[0][0] + mul * r, 10), round(center[0][1] + mul * r, 10)),
+                                       (round(center[0][0], 10), round(center[0][1] + mul * r, 10))]),
+                        'l2': Polygon([center[1], (round(center[1][0] + mul * r, 10), round(center[1][1], 10)),
+                                       (round(center[1][0] + mul * r, 10), round(center[1][1] + mul * r, 10)),
+                                       (round(center[1][0], 10), round(center[1][1] + mul * r, 10))]),
+                        'l3': Polygon([center[2], (round(center[2][0] + mul * r, 10), round(center[2][1], 10)),
+                                       (round(center[2][0] + mul * r, 10), round(center[2][1] + mul * r, 10)),
+                                       (round(center[2][0], 10), round(center[2][1] + mul * r, 10))]),
+                        'l4': Polygon([center[3], (round(center[3][0] + mul * r, 10), round(center[3][1], 10)),
+                                       (round(center[3][0] + mul * r, 10), round(center[3][1] + mul * r, 10)),
+                                       (round(center[3][0], 10), round(center[3][1] + mul * r, 10))]),
+                        'l5': Polygon([center[4], (round(center[4][0] + mul * r, 10), round(center[4][1], 10)),
+                                       (round(center[4][0] + mul * r, 10), round(center[4][1] + mul * r, 10)),
+                                       (round(center[4][0], 10), round(center[4][1] + mul * r, 10))]),
+                        'l6': Polygon([center[5], (round(center[5][0] + mul * r, 10), round(center[5][1], 10)),
+                                       (round(center[5][0] + mul * r, 10), round(center[5][1] + mul * r, 10)),
+                                       (round(center[5][0], 10), round(center[5][1] + mul * r, 10))])
                         }
 
         center = [(0.6, 0.3), (0.6, 0.5), (0.3, 0.6), (0.8, 0.6), (0.2, 0.3)]
         self.obs = {'o1': Polygon([(0.3, 0.0), (0.7, 0.0), (0.7, 0.2), (0.3, 0.2)]),
                     'o2': Polygon([(0.4, 0.7), (0.6, 0.7), (0.6, 1.0), (0.4, 1.0)]),
-                    'o3': Polygon([(center[0][0], center[0][1]), (center[0][0] + mul * r, center[0][1]),
-                                   (center[0][0] + mul * r, center[0][1] + mul * r),
-                                   (center[0][0], center[0][1] + mul * r)]),
-                    'o4': Polygon([(center[1][0], center[1][1]), (center[1][0] + mul * r, center[1][1]),
-                                   (center[1][0] + mul * r, center[1][1] + mul * r),
-                                   (center[1][0], center[1][1] + mul * r)]),
-                    'o5': Polygon([(center[2][0], center[2][1]), (center[2][0] + mul * r, center[2][1]),
-                                   (center[2][0] + mul * r, center[2][1] + mul * r),
-                                   (center[2][0], center[2][1] + mul * r)]),
-                    'o6': Polygon([(center[3][0], center[3][1]), (center[3][0] + mul * r, center[3][1]),
-                                   (center[3][0] + mul * r, center[3][1] + mul * r),
-                                   (center[3][0], center[3][1] + mul * r)]),
-                    'o7': Polygon([(center[4][0], center[4][1]), (center[4][0] + mul * r, center[4][1]),
-                                   (center[4][0] + mul * r, center[4][1] + mul * r),
-                                   (center[4][0], center[4][1] + mul * r)])
+                    'o3': Polygon([(round(center[0][0], 10), round(center[0][1], 10)),
+                                   (round(center[0][0] + mul * r, 10), round(center[0][1], 10)),
+                                   (round(center[0][0] + mul * r, 10), round(center[0][1] + mul * r, 10)),
+                                   (round(center[0][0], 10), round(center[0][1] + mul * r, 10))]),
+                    'o4': Polygon([(round(center[1][0], 10), round(center[1][1], 10)),
+                                   (round(center[1][0] + mul * r, 10), round(center[1][1], 10)),
+                                   (round(center[1][0] + mul * r, 10), round(center[1][1] + mul * r, 10)),
+                                   (round(center[1][0], 10), round(center[1][1] + mul * r, 10))]),
+                    'o5': Polygon([(round(center[2][0], 10), round(center[2][1], 10)),
+                                   (round(center[2][0] + mul * r, 10), round(center[2][1], 10)),
+                                   (round(center[2][0] + mul * r, 10), round(center[2][1] + mul * r, 10)),
+                                   (round(center[2][0], 10), round(center[2][1] + mul * r, 10))]),
+                    'o6': Polygon([(round(center[3][0], 10), round(center[3][1], 10)),
+                                   (round(center[3][0] + mul * r, 10), round(center[3][1], 10)),
+                                   (round(center[3][0] + mul * r, 10), round(center[3][1] + mul * r, 10)),
+                                   (round(center[3][0], 10), round(center[3][1] + mul * r, 10))]),
+                    'o7': Polygon([(round(center[4][0], 10), round(center[4][1], 10)),
+                                   (round(center[4][0] + mul * r, 10), round(center[4][1], 10)),
+                                   (round(center[4][0] + mul * r, 10), round(center[4][1] + mul * r, 10)),
+                                   (round(center[4][0], 10), round(center[4][1] + mul * r, 10))])
                     }
 
         init_state = []
@@ -99,8 +104,8 @@ class problemFormulation(object):
                       7: 20}
         case = case  # int(sys.argv[1])
         for i in range(case2robot[case]):
-            init_state.append((r / 2, r / 2))
-        self.init_state = (r / 2, r / 2)
+            init_state.append((round(r / 2,10), round(r / 2,10)))
+        self.init_state = (round(r / 2,10), round(r / 2,10))
         # self.init_state = ((0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1))
         # self.init_state = ((0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1))
         # self.init_state = ((0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1))
@@ -221,11 +226,12 @@ class problemFormulation(object):
             # self.formula = '[]<> e4 && [](<> e3  && <> e1) && (!e1 U e2)  && []!e5'   # 1 2   without any reusable skills, 1 is still much better than 2
             # self.formula = '[]<> e1 && <> e2 && <> e3 && <> e4 && !e3 U e2'
             # test directreuse
-            # self.formula = '[]<> e1  && !e1 U e3'
+            self.formula = '[]<> e1  && !e1 U e3'
             # self.formula = '[](e1 -> X (!e1 U e5)) && []<>e1 && []<> e5'  # better than [](e1 -> X (!e1 U e5)) && []<>e1
             # self.formula = '[]<> e1 && [] <> e2'  # worse than '[]<> e1 && <> e5'
             # self.formula = '[]<> (e1 && <> (e3 && <> e2))'
-            # self.formula = '[]<> (e1 && <> e3)'
+            # self.formula = '[] (<> e4 && <> e3)'
+            # self.formula = '[]<> e5'
             # self.formula = '[] (<> e1 && <> e2 && <> e3 ) && <> e5 && !e1 U e2 && !e3 U e2'
             # self.formula = '[] (<> e1 && <> e2  && <> e3  && <> e4 && <> e5 && <> e6)'
             self.formula_comp = {1: '(l1_1)',
