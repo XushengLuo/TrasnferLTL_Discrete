@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="090b1a66-2a42-4ae6-a406-6d1f3baea6f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ShortestPath.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/lib_subtask123456_20*20_more_1st" afterPath="$PROJECT_DIR$/data/lib_subtask123456_20*20_more_1st" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/path.png" afterPath="$PROJECT_DIR$/path.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BiasConstree.py" afterPath="$PROJECT_DIR$/BiasConstree.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Buchi.py" afterPath="$PROJECT_DIR$/Buchi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Constree.py" afterPath="$PROJECT_DIR$/Constree.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DetermineRoots.py" afterPath="$PROJECT_DIR$/DetermineRoots.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Problem.py" afterPath="$PROJECT_DIR$/Problem.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DetectReuse_1st.py" afterPath="$PROJECT_DIR$/DetectReuse_1st.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DetermineRoots_1st.py" afterPath="$PROJECT_DIR$/DetermineRoots_1st.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransferLTL.py" afterPath="$PROJECT_DIR$/TransferLTL.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransferPlanning_1st.py" afterPath="$PROJECT_DIR$/TransferPlanning_1st.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,8 +45,8 @@
       <file leaf-file-name="DetectReuse_1st.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DetectReuse_1st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2743">
-              <caret line="250" column="39" lean-forward="false" selection-start-line="250" selection-start-column="39" selection-end-line="250" selection-end-column="39" />
+            <state relative-caret-position="174">
+              <caret line="65" column="52" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="52" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -67,8 +57,8 @@
       <file leaf-file-name="TransferLTL.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TransferLTL.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+            <state relative-caret-position="53">
+              <caret line="83" column="31" lean-forward="true" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -76,7 +66,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BiasConstree.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DetermineRoots.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DetermineRoots.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DetermineRoots_1st.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DetermineRoots_1st.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="93" column="14" lean-forward="true" selection-start-line="93" selection-start-column="14" selection-end-line="93" selection-end-column="14" />
+              <folding>
+                <element signature="e#75#104#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BiasConstree.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BiasConstree.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="134">
@@ -177,16 +189,16 @@
         <option value="$PROJECT_DIR$/Constree_1st.py" />
         <option value="$PROJECT_DIR$/DetectReuse.py" />
         <option value="$PROJECT_DIR$/TransferPlanning.py" />
-        <option value="$PROJECT_DIR$/DetermineRoots_1st.py" />
-        <option value="$PROJECT_DIR$/DetectReuse_1st.py" />
         <option value="$PROJECT_DIR$/DetermineRoots.py" />
         <option value="$PROJECT_DIR$/TransferPlanning_1st.py" />
         <option value="$PROJECT_DIR$/Buchi.py" />
         <option value="$PROJECT_DIR$/Constree.py" />
         <option value="$PROJECT_DIR$/ShortestPath.py" />
-        <option value="$PROJECT_DIR$/TransferLTL.py" />
         <option value="$PROJECT_DIR$/BiasConstree.py" />
         <option value="$PROJECT_DIR$/Problem.py" />
+        <option value="$PROJECT_DIR$/TransferLTL.py" />
+        <option value="$PROJECT_DIR$/DetectReuse_1st.py" />
+        <option value="$PROJECT_DIR$/DetermineRoots_1st.py" />
       </list>
     </option>
   </component>
@@ -554,16 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DetermineRoots_1st.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="16" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-          <folding>
-            <element signature="e#75#104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/shapely/geometry/point.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
@@ -614,14 +616,6 @@
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#935#2035#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DetermineRoots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="76" column="25" lean-forward="false" selection-start-line="76" selection-start-column="25" selection-end-line="76" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -678,16 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DetectReuse_1st.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2743">
-          <caret line="250" column="39" lean-forward="false" selection-start-line="250" selection-start-column="39" selection-end-line="250" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ShortestPath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -718,6 +702,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/BiasConstree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="525" column="19" lean-forward="true" selection-start-line="525" selection-start-column="19" selection-end-line="525" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#13061#13707#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Problem.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
@@ -730,21 +725,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TransferLTL.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+        <state relative-caret-position="53">
+          <caret line="83" column="31" lean-forward="true" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BiasConstree.py">
+    <entry file="file://$PROJECT_DIR$/DetermineRoots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="525" column="19" lean-forward="true" selection-start-line="525" selection-start-column="19" selection-end-line="525" selection-end-column="19" />
+        <state relative-caret-position="150">
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DetectReuse_1st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="65" column="52" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="52" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#13061#13707#0" expanded="false" />
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DetermineRoots_1st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="93" column="14" lean-forward="true" selection-start-line="93" selection-start-column="14" selection-end-line="93" selection-end-column="14" />
+          <folding>
+            <element signature="e#75#104#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -94,6 +94,7 @@ time3 = (datetime.datetime.now() - start3).total_seconds()
 #     print(e[0], e[1])
 
 with open('data/lib_subtask123456_20*20_more_1st', 'rb') as filehandle:
+    # regions included, grid number, more obstacles, 1st subtask generation
     # store the data as binary data stream
     end2path = pickle.load(filehandle)
     h_task_lib = pickle.load(filehandle)

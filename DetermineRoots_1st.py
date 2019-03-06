@@ -92,11 +92,15 @@ def hoftask(init, buchi_graph, regions, r):
                     if x_set:
                         for x in x_set:
                             cand = State((x, q_target), label)
-
-                            if curr[0] != cand and not match(h_task, curr[0], cand):
+                            # seems no need to check
+                            # if curr[0] != cand and not match(h_task, curr[0], cand):
+                            if not match(h_task, curr[0], cand):
                                 h_task.add_edge(curr[0], cand)
 
-                            succ_dict[(cand, edge_label)] = {q_b}
+                            try:
+                                succ_dict[(cand, edge_label)].add(q_b)
+                            except KeyError:
+                                succ_dict[(cand, edge_label)] = {q_b}
 
                             if (cand, edge_label) not in open_set and (cand, edge_label) not in explore_set:
                                 open_set.append((cand, edge_label))
