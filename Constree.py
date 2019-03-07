@@ -348,9 +348,16 @@ def construction_tree_connect_root(subtree, q_new, label, centers, h_task, conne
 def multi_trees(h_task, buchi_graph, ts, centers, max_node, num):
     multi_tree = list()
     # a list of subtrees
-    for root in h_task.nodes():
-        init = root.xq()
-        multi_tree.append(tree(ts, buchi_graph, init))
+    # for root in h_task.nodes():
+    #     init = root.xq()
+    #     multi_tree.append(tree(ts, buchi_graph, init))
+    # better way to construct the roots of multitrees
+    roots = set()
+    for root in h_task.edges():
+        init = root[0].xq()
+        if init not in roots:
+            roots.add(init)
+            multi_tree.append(tree(ts, buchi_graph, init))
     # =====================================================================================
     # n_max = n_max
     # c = 0
