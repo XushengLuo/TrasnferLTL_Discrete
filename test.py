@@ -10,13 +10,13 @@
 #
 # plt.show()
 
-from Problem import problemFormulation
+from ChangeProblem import problemFormulation
 from Visualization import region_plot
 import matplotlib.pyplot as plt
 
 
 workspace, regions, centers, obs, init_state, uni_cost, formula,\
-            formula_comp, exclusion, num = problemFormulation(0).Formulation()
+            formula_comp, exclusion, num, path = problemFormulation(0).Formulation()
 ts = {'workspace': workspace, 'region': regions, 'obs': obs, 'uni_cost': uni_cost}
 
 
@@ -24,4 +24,5 @@ ax = plt.figure(1).gca()
 region_plot(regions, 'region', ax, num)
 region_plot(obs, 'obs', ax, num)
 plt.grid(False)
+plt.scatter([0.025], [0.025], s=80, c='r', marker=(5, 2))
 plt.show()

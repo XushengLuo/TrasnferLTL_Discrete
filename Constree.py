@@ -20,7 +20,7 @@ from datetime import datetime
 class tree(object):
     """ construction of prefix and suffix tree
     """
-    def __init__(self, ts, buchi_graph, init, base=1e3):
+    def __init__(self, ts, buchi_graph, init, base=1e3, seg='pre'):
         """
         :param ts: transition system
         :param buchi_graph:  Buchi graph
@@ -45,6 +45,8 @@ class tree(object):
         # already used skilles
         self.used = set()
         self.base = base
+        self.seg = seg
+        self.found = 10
 
     def sample(self, num):
         """
@@ -286,7 +288,7 @@ def construction_tree(subtree, x_new, label_new, buchi_graph, centers, h_task, f
 
         # new product state
         q_new = (x_new, b_state)
-
+        added = 0
         if q_new not in subtree.tree.nodes():
             # candidate parent state
             prec = subtree.prec(q_new, label_new, obs_check)
@@ -357,7 +359,7 @@ def multi_trees(h_task, buchi_graph, ts, centers, max_node, num):
         init = root[0].xq()
         if init not in roots:
             roots.add(init)
-            multi_tree.append(tree(ts, buchi_graph, init))
+            multi_tree.append(tree(ts, buchi_graph, init, 0))
     # =====================================================================================
     # n_max = n_max
     # c = 0

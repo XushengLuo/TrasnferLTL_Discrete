@@ -47,7 +47,7 @@ def region_plot(regions, flag, ax, num):
             patches.append(polygon)
             p = PatchCollection(patches, facecolors=color, edgecolors=color)
             ax.add_collection(p)
-            ax.text(np.mean(x), np.mean(y), r'${}_{}$'.format(key[0], key[1:]), fontsize=16)
+            ax.text(np.mean(x), np.mean(y), r'${0}_{{{1}}}$'.format(key[0], key[1:]), fontsize=16)
 
 
 def path_plot(path, regions, obs, num_grid):

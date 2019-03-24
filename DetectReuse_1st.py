@@ -204,7 +204,9 @@ def to_do(todo, newsubtask2subtask, subtask_new):
         todo.add(subtask_new)
 
 
-def detect_reuse(h_task_lib, h_task_new, end2path, tree):
+# def detect_reuse(h_task_lib, h_task_new, end2path, tree):
+def detect_reuse(task_group, h_task_new, end2path, tree):
+
     """
     detect resuable subtask
     :param h_task_lib:
@@ -226,8 +228,16 @@ def detect_reuse(h_task_lib, h_task_new, end2path, tree):
             subtask2path[(subtask_new[0].xq(), subtask_new[1].xq())] = [subtask_new[0].xq(), subtask_new[1].xq()]
             continue
 
-        for subtask_lib in h_task_lib.edges:
-            # future work: it's better to compare the lib of controller
+        # for subtask_lib in h_task_lib.edges:
+        try:
+            a = task_group[subtask_new[0].x]
+        except KeyError:
+            a = set()
+        try:
+            b = task_group[subtask_new[1].x]
+        except KeyError:
+            b = set()
+        for subtask_lib in a.union(b):
             if subtask_lib not in end2path.keys():
                 continue
             direction = inclusion(subtask_lib, subtask_new, tree, end2path)
@@ -263,15 +273,22 @@ def detect_reuse(h_task_lib, h_task_new, end2path, tree):
 
     # successor root
     todo_succ = {td[0].xq(): set() for td in todo}
-
+    # version 1
     for td in todo:
         td_succ = list(h_task_new.succ[td[0]])
         for t in todo:
             if t[0] is not td[0] and t[0] in td_succ:
                 todo_succ[td[0].xq()].add(t[0].xq())
 
+    # version 2
+    # for td in todo:
+    #     td_succ = list(h_task_new.succ[td[0]])
+    #     for t in td_succ:
+    #         if t is not td[0]:
+    #             todo_succ[td[0].xq()].add(t.xq())
+
     init_node = h_task_new.graph['init']
-    if init_node.xq() not in todo_succ:
+    if init_node.xq() not in list(todo_succ.keys()):
         todo_succ[init_node.xq()] = set()
         td_succ = list(h_task_new.succ[init_node])
         for t in todo:

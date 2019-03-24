@@ -67,9 +67,10 @@ class problemFormulation(object):
                                        (round(center[5][0], 10), round(center[5][1] + mul * r, 10))])
                         }
 
-        center = [(0.6, 0.3), (0.6, 0.5), (0.3, 0.6), (0.8, 0.6), (0.2, 0.3)]
+        center = [(0.6, 0.3), (0.6, 0.5), (0.3, 0.6), (0.8, 0.6), (0.2, 0.3), (0.4, 0.5),  (0.1, 0.7),   # (0.1, 0.8),
+                  (0.4, 0.2), (0.5, 0.4), (0.2, 0.4), (0.7, 0.7)]
         self.obs = {'o1': Polygon([(0.3, 0.0), (0.7, 0.0), (0.7, 0.2), (0.3, 0.2)]),
-                    'o2': Polygon([(0.4, 0.7), (0.6, 0.7), (0.6, 1.0), (0.4, 1.0)]),
+                    'o2': Polygon([(0.4, 0.7), (0.6, 0.7), (0.6, 1.0), (0.4, 1.0)]),  # less
                     'o3': Polygon([(round(center[0][0], 10), round(center[0][1], 10)),
                                    (round(center[0][0] + mul * r, 10), round(center[0][1], 10)),
                                    (round(center[0][0] + mul * r, 10), round(center[0][1] + mul * r, 10)),
@@ -89,7 +90,32 @@ class problemFormulation(object):
                     'o7': Polygon([(round(center[4][0], 10), round(center[4][1], 10)),
                                    (round(center[4][0] + mul * r, 10), round(center[4][1], 10)),
                                    (round(center[4][0] + mul * r, 10), round(center[4][1] + mul * r, 10)),
-                                   (round(center[4][0], 10), round(center[4][1] + mul * r, 10))])
+                                   (round(center[4][0], 10), round(center[4][1] + mul * r, 10))]),  # more
+                    'o8': Polygon([(round(center[5][0], 10), round(center[5][1], 10)),
+                                   (round(center[5][0] + mul * r, 10), round(center[5][1], 10)),
+                                   (round(center[5][0] + mul * r, 10), round(center[5][1] + mul * r, 10)),
+                                   (round(center[5][0], 10), round(center[5][1] + mul * r, 10))]),
+                    'o9': Polygon([(round(center[6][0], 10), round(center[6][1], 10)),
+                                   (round(center[6][0] + mul * r, 10), round(center[6][1], 10)),
+                                   (round(center[6][0] + mul * r, 10), round(center[6][1] + mul * r, 10)),
+                                   (round(center[6][0], 10), round(center[6][1] + mul * r, 10))]),
+                    'o10': Polygon([(round(center[7][0], 10), round(center[7][1], 10)),
+                                    (round(center[7][0] + mul * r, 10), round(center[7][1], 10)),
+                                    (round(center[7][0] + mul * r, 10), round(center[7][1] + mul * r, 10)),
+                                    (round(center[7][0], 10), round(center[7][1] + mul * r, 10))]),  # more more
+                    'o11': Polygon([(round(center[8][0], 10), round(center[8][1], 10)),
+                                    (round(center[8][0] + mul * r, 10), round(center[8][1], 10)),
+                                    (round(center[8][0] + mul * r, 10), round(center[8][1] + mul * r, 10)),
+                                    (round(center[8][0], 10), round(center[8][1] + mul * r, 10))]),  # more more
+                    'o12': Polygon([(round(center[9][0], 10), round(center[9][1], 10)),
+                                    (round(center[9][0] + mul * r, 10), round(center[9][1], 10)),
+                                    (round(center[9][0] + mul * r, 10), round(center[9][1] + mul * r, 10)),
+                                    (round(center[9][0], 10), round(center[9][1] + mul * r, 10))]),  # more more
+                    'o13': Polygon([(round(center[10][0], 10), round(center[10][1], 10)),
+                                    (round(center[10][0] + mul * r, 10), round(center[10][1], 10)),
+                                    (round(center[10][0] + mul * r, 10), round(center[10][1] + mul * r, 10)),
+                                    (round(center[10][0], 10), round(center[10][1] + mul * r, 10))])  # more more
+
                     }
 
         init_state = []
@@ -104,8 +130,10 @@ class problemFormulation(object):
                       7: 20}
         case = case  # int(sys.argv[1])
         for i in range(case2robot[case]):
-            init_state.append((round(r / 2,10), round(r / 2,10)))
-        self.init_state = (round(r / 2,10), round(r / 2,10))
+            init_state.append((round(r / 2, 10), round(r / 2, 10)))
+        self.init_state = (round(r / 2, 10), round(r / 2, 10))
+        # self.init_state = (round(r/2+r,10), round(r/2+r,10))
+
         # self.init_state = ((0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1))
         # self.init_state = ((0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1))
         # self.init_state = ((0.8, 0.1),(0.8, 0.1),(0.8, 0.1),(0.8, 0.1))
@@ -217,23 +245,32 @@ class problemFormulation(object):
             # |              2: uniform                      |
             # |                                              |
             # #----------------------------------------------#
-            # self.formula = '[] (<> e1 && <> e4) && [] (e1 -> X (!e1 U e4))'
             # self.formula = '[]<> (e1 && <> e3) && !e1 U e3'
-            # self.formula = '[]<> (e1 && <> e2)  && []<> (e3 && <> e4)  && !e1 U e3'
-            # self.formula = '[] (<> e1 && <> e2) && [](<> e3 && <> e4) && <> e5 && <> e6  && [] (e1 -> X (!e1 U e2))'\
-            #              '&& [] (e3 -> X (!e3 U e4))'
+            # self.formula = '<> e1 && <> e2 && <> e3'
+
+
             # self.formula = '[] <> (e1 && <> e2) && []<>( e3 && <> e4) && <> e5  && <> e6 && !e1 U e5'
+            # self.formula = '[] <> (e1 && <> e2) && []<>( e3 && <> e4) && [] <> (e5  && <> e6) && !e1 U e5'
+
             # self.formula = '[]<> e4 && [](<> e3  && <> e1) && (!e1 U e2)  && []!e5'   # 1 2   without any reusable skills, 1 is still much better than 2
             # self.formula = '[]<> e1 && <> e2 && <> e3 && <> e4 && !e3 U e2'
             # test directreuse
-            self.formula = '[]<> e1  && !e1 U e3'
+            # self.formula = '[]<> e1  && !e1 U e3'
             # self.formula = '[](e1 -> X (!e1 U e5)) && []<>e1 && []<> e5'  # better than [](e1 -> X (!e1 U e5)) && []<>e1
             # self.formula = '[]<> e1 && [] <> e2'  # worse than '[]<> e1 && <> e5'
             # self.formula = '[]<> (e1 && <> (e3 && <> e2))'
             # self.formula = '[] (<> e4 && <> e3)'
             # self.formula = '[]<> e5'
-            # self.formula = '[] (<> e1 && <> e2 && <> e3 ) && <> e5 && !e1 U e2 && !e3 U e2'
             # self.formula = '[] (<> e1 && <> e2  && <> e3  && <> e4 && <> e5 && <> e6)'
+            # self.formula = '[] (<> e1 && <> e2)'
+            # self.formula = '[] (<> e1 && <> e4) && [] (e1 -> X (!e1 U e4))'
+            # self.formula = '[] (<> e1 && <> e2  && <> e3  && <> e4 && <> e5 && <> e6)'
+            # self.formula = '[]<> (e1 && <> e2)  && []<> (e3 && <> e4)  && !e1 U e3'
+            # self.formula = '[] (<> e1 && <> e2) && [](<> e3 && <> e4) && <> e5 && <> e6  && [] (e1 -> X (!e1 U e2))'\
+            #              '&& [] (e3 -> X (!e3 U e4))'
+            self.formula = '[] (<> e1 && <> e2) && [](<> e3 && <> e4) &&  []( <> e5 && <> e6)  && [] (e1 -> X (!e1 U e2))' \
+                           '&& [] (e3 -> X (!e3 U e4)) && [] (e5 -> X (!e5 U e6))'
+
             self.formula_comp = {1: '(l1_1)',
                                  2: '(l2_1)',
                                  3: '(l3_1)',

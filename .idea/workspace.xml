@@ -2,8 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="090b1a66-2a42-4ae6-a406-6d1f3baea6f2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ChangeProblem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EnvironmentChange.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TransferPlanning_pre_suf.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/path.png" afterPath="$PROJECT_DIR$/path.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BiasConstree.py" afterPath="$PROJECT_DIR$/BiasConstree.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Constree.py" afterPath="$PROJECT_DIR$/Constree.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DetectReuse_1st.py" afterPath="$PROJECT_DIR$/DetectReuse_1st.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DetermineRoots_1st.py" afterPath="$PROJECT_DIR$/DetermineRoots_1st.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Problem.py" afterPath="$PROJECT_DIR$/Problem.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransferLTL.py" afterPath="$PROJECT_DIR$/TransferLTL.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransferPlanning_1st.py" afterPath="$PROJECT_DIR$/TransferPlanning_1st.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Visualization.py" afterPath="$PROJECT_DIR$/Visualization.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Problem.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Problem.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Problem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="232" column="48" lean-forward="false" selection-start-line="232" selection-start-column="48" selection-end-line="232" selection-end-column="48" />
+            <state relative-caret-position="313">
+              <caret line="271" column="35" lean-forward="false" selection-start-line="271" selection-start-column="35" selection-end-line="271" selection-end-column="35" />
               <folding>
                 <element signature="e#75#118#0" expanded="true" />
               </folding>
@@ -32,58 +45,57 @@
       <file leaf-file-name="ShortestPath.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ShortestPath.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DetectReuse_1st.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DetectReuse_1st.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="65" column="52" lean-forward="false" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TransferLTL.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TransferLTL.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="83" column="31" lean-forward="false" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DetermineRoots.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DetermineRoots.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+            <state relative-caret-position="112">
+              <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TransferPlanning_1st.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TransferPlanning_1st.py">
+      <file leaf-file-name="ChangeProblem.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ChangeProblem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1167">
-              <caret line="579" column="24" lean-forward="true" selection-start-line="579" selection-start-column="24" selection-end-line="579" selection-end-column="24" />
+            <state relative-caret-position="483">
+              <caret line="224" column="13" lean-forward="false" selection-start-line="224" selection-start-column="13" selection-end-line="224" selection-end-column="13" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#935#2035#0" expanded="false" />
+                <element signature="e#75#118#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnvironmentChange.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EnvironmentChange.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+                <element signature="e#11472#12118#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="450">
+                <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -91,24 +103,9 @@
       <file leaf-file-name="DetermineRoots_1st.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DetermineRoots_1st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1335">
-              <caret line="93" column="25" lean-forward="false" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
-              <folding>
-                <element signature="e#75#104#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BiasConstree.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BiasConstree.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7575">
-              <caret line="525" column="19" lean-forward="false" selection-start-line="525" selection-start-column="19" selection-end-line="525" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#13061#13707#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="98">
+              <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,9 +113,22 @@
       <file leaf-file-name="Visualization.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Visualization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+            <state relative-caret-position="477">
+              <caret line="73" column="7" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BiasConstree.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BiasConstree.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#13067#13713#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,13 +136,12 @@
       <file leaf-file-name="Constree.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Constree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="354" column="17" lean-forward="true" selection-start-line="354" selection-start-column="17" selection-end-line="354" selection-end-column="17" />
+            <state relative-caret-position="134">
+              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="64" selection-end-column="28" />
               <folding>
                 <element signature="e#156#182#0" expanded="true" />
-                <element signature="e#1345#1438#1" expanded="false" />
-                <element signature="e#7830#8397#0" expanded="false" />
-                <element signature="e#8456#9102#0" expanded="false" />
+                <element signature="e#1403#1496#1" expanded="false" />
+                <element signature="e#8514#9160#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -142,36 +151,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>find_</find>
-      <find>prec</find>
-      <find>good</find>
-      <find>match</find>
-      <find>cons</find>
-      <find>'label'</find>
-      <find>(0.8250000000000001, 0.42500000000000004)</find>
-      <find>(0.8250000000000001, 0.8250000000000001)</find>
+      <find>acpt_c</find>
+      <find>search</find>
+      <find>label</find>
+      <find>sear</find>
+      <find>find_pa</find>
+      <find>find_oa</find>
+      <find>number of su</find>
+      <find>time</find>
+      <find>sweep</find>
+      <find>findpath</find>
+      <find>swee</find>
+      <find>found</find>
       <find>zero</find>
-      <find>sample</find>
-      <find>dnf</find>
-      <find>sample_lis</find>
-      <find>tree(</find>
-      <find>add_ed</find>
-      <find>0.22</find>
-      <find>reduce</find>
-      <find>sam</find>
-      <find>add_edge</find>
-      <find>uni</find>
-      <find>extend</find>
-      <find>truth</find>
-      <find>exte</find>
+      <find>self.en</find>
+      <find>acpt</find>
+      <find>obs_c</find>
+      <find>self.goals</find>
+      <find>findpa</find>
+      <find>findne</find>
       <find>acpt_</find>
-      <find>p_new</find>
+      <find>sample</find>
+      <find>obs_chec</find>
+      <find>obs_check</find>
+      <find>n =</find>
+      <find>point2 =</find>
+      <find>n = 3</find>
+      <find>n = 1</find>
+      <find>n =</find>
+      <find>extend</find>
       <find>print</find>
-      <find>accept</find>
-      <find>target</find>
-      <find>buchi_graph.graph\[\'accept\'\]</find>
-      <find>\[\'accept\'\]</find>
-      <find>to_dnf</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -181,30 +190,32 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/state.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/bug.md" />
-        <option value="$PROJECT_DIR$/Visualization.py" />
         <option value="$PROJECT_DIR$/Constree_1st.py" />
         <option value="$PROJECT_DIR$/DetectReuse.py" />
         <option value="$PROJECT_DIR$/TransferPlanning.py" />
         <option value="$PROJECT_DIR$/DetermineRoots.py" />
-        <option value="$PROJECT_DIR$/TransferPlanning_1st.py" />
         <option value="$PROJECT_DIR$/Buchi.py" />
         <option value="$PROJECT_DIR$/ShortestPath.py" />
-        <option value="$PROJECT_DIR$/BiasConstree.py" />
-        <option value="$PROJECT_DIR$/Problem.py" />
-        <option value="$PROJECT_DIR$/TransferLTL.py" />
-        <option value="$PROJECT_DIR$/DetectReuse_1st.py" />
-        <option value="$PROJECT_DIR$/DetermineRoots_1st.py" />
+        <option value="$PROJECT_DIR$/TransferPlanning_1st.py" />
         <option value="$PROJECT_DIR$/Constree.py" />
+        <option value="$PROJECT_DIR$/TransferPlanning_pre_suf.py" />
+        <option value="$PROJECT_DIR$/Visualization.py" />
+        <option value="$PROJECT_DIR$/DetermineRoots_1st.py" />
+        <option value="$PROJECT_DIR$/DetectReuse_1st.py" />
+        <option value="$PROJECT_DIR$/TransferLTL.py" />
+        <option value="$PROJECT_DIR$/Problem.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/EnvironmentChange.py" />
+        <option value="$PROJECT_DIR$/BiasConstree.py" />
+        <option value="$PROJECT_DIR$/ChangeProblem.py" />
+        <option value="$PROJECT_DIR$/data.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="-1920" />
-    <option name="y" value="-180" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="634" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -276,7 +287,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TransferPlanning">
+  <component name="RunManager" selected="Python.BiasConstree">
     <configuration name="BiasConstree" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -294,7 +305,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="Problem" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ChangeProblem" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -306,12 +317,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TransferLTL_Discrete" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Problem.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ChangeProblem.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="ShortestPath" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="EnvironmentChange" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -323,24 +334,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TransferLTL_Discrete" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ShortestPath.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="TransferPlanning (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TransferLTL_Discrete" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TransferPlanning.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/EnvironmentChange.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -362,20 +356,37 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TransferLTL_Discrete" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.TransferPlanning" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Problem" />
-      <item index="2" class="java.lang.String" itemvalue="Python.TransferPlanning (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ShortestPath" />
-      <item index="4" class="java.lang.String" itemvalue="Python.BiasConstree" />
+      <item index="1" class="java.lang.String" itemvalue="Python.BiasConstree" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.EnvironmentChange" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ChangeProblem" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.TransferPlanning" />
-        <item index="1" class="java.lang.String" itemvalue="Python.BiasConstree" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ShortestPath" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Problem" />
-        <item index="4" class="java.lang.String" itemvalue="Python.TransferPlanning (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.BiasConstree" />
+        <item index="1" class="java.lang.String" itemvalue="Python.EnvironmentChange" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ChangeProblem" />
+        <item index="4" class="java.lang.String" itemvalue="Python.TransferPlanning" />
       </list>
     </recent_temporary>
   </component>
@@ -402,47 +413,47 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="-180" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16134185" sideWeight="0.8389121" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27625203" sideWeight="0.8389121" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32102272" sideWeight="0.5048465" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32102272" sideWeight="0.4951535" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24857955" sideWeight="0.4951535" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15912762" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43039772" sideWeight="0.49653807" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3544776" sideWeight="0.49653807" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24071082" sideWeight="0.16108787" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11954766" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33841464" sideWeight="0.5034619" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3806818" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24071082" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4588068" sideWeight="0.49653807" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32102272" sideWeight="0.5048465" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24857955" sideWeight="0.4951535" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24474959" sideWeight="0.8389121" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15912762" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35511363" sideWeight="0.49653807" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24071082" sideWeight="0.16108787" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11954766" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -452,9 +463,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TransferLTL.py</url>
+          <line>164</line>
+          <option name="timeStamp" value="189" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BiasConstree.py</url>
-          <line>462</line>
-          <option name="timeStamp" value="147" />
+          <line>538</line>
+          <option name="timeStamp" value="235" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -464,7 +480,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="148" />
+      <option name="time" value="236" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -504,7 +520,7 @@
         <state relative-caret-position="1335">
           <caret line="93" column="25" lean-forward="false" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
           <folding>
-            <element signature="e#75#104#0" expanded="true" />
+            <element signature="e#75#104#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -515,7 +531,7 @@
           <caret line="525" column="19" lean-forward="true" selection-start-line="525" selection-start-column="19" selection-end-line="525" selection-end-column="19" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#13061#13707#0" expanded="false" />
+            <element signature="e#13067#13713#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -546,9 +562,8 @@
           <caret line="35" column="35" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
           <folding>
             <element signature="e#156#182#0" expanded="true" />
-            <element signature="e#1345#1438#1" expanded="false" />
-            <element signature="e#7830#8397#0" expanded="false" />
-            <element signature="e#8456#9102#0" expanded="false" />
+            <element signature="e#1403#1496#1" expanded="false" />
+            <element signature="e#8514#9160#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -582,13 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Python/3.6/lib/python/site-packages/sympy/logic/boolalg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -610,6 +618,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -621,45 +630,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Constree_1st.py" />
-    <entry file="file://$PROJECT_DIR$/DetectReuse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="109" column="36" lean-forward="true" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TransferPlanning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/shapely/geometry/point.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/vectors/vectors.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="97" column="20" lean-forward="true" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="1025" column="0" lean-forward="false" selection-start-line="1025" selection-start-column="0" selection-end-line="1025" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -674,13 +648,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="41">
           <caret line="2020" column="14" lean-forward="true" selection-start-line="2020" selection-start-column="14" selection-end-line="2020" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -691,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/networkx/classes/reportviews.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/networkx/algorithms/shortest_paths/unweighted.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -705,10 +666,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/shapely/geometry/point.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransferPlanning_1st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-575">
+          <caret line="122" column="32" lean-forward="false" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransferPlanning_pre_suf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="601" column="36" lean-forward="true" selection-start-line="601" selection-start-column="36" selection-end-line="601" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransferPlanning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="605" column="89" lean-forward="true" selection-start-line="605" selection-start-column="89" selection-end-line="605" selection-end-column="89" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DetectReuse_1st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DetectReuse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="109" column="36" lean-forward="true" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#29#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DetermineRoots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="true" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransferLTL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="132" column="85" lean-forward="false" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Buchi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2610">
-          <caret line="291" column="26" lean-forward="false" selection-start-line="291" selection-start-column="20" selection-end-line="291" selection-end-column="26" />
+        <state relative-caret-position="515">
+          <caret line="87" column="41" lean-forward="false" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
           <folding>
             <element signature="e#3436#4920#0" expanded="false" />
             <element signature="e#4969#5552#0" expanded="false" />
@@ -717,104 +754,148 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Visualization.py">
+    <entry file="file://$PROJECT_DIR$/Constree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BiasConstree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7575">
-          <caret line="525" column="19" lean-forward="false" selection-start-line="525" selection-start-column="19" selection-end-line="525" selection-end-column="19" />
+        <state relative-caret-position="134">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="64" selection-end-column="28" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#13061#13707#0" expanded="false" />
+            <element signature="e#156#182#0" expanded="true" />
+            <element signature="e#1403#1496#1" expanded="false" />
+            <element signature="e#8514#9160#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TransferLTL.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="83" column="31" lean-forward="false" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+        <state relative-caret-position="157">
+          <caret line="1025" column="0" lean-forward="false" selection-start-line="1025" selection-start-column="0" selection-end-line="1025" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2017.2/python_stubs/-1604679571/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="496" column="4" lean-forward="true" selection-start-line="496" selection-start-column="4" selection-end-line="496" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/python3/3.6.3/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/networkx/classes/reportviews.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="929" column="0" lean-forward="false" selection-start-line="929" selection-start-column="0" selection-end-line="929" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Problem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="271" column="35" lean-forward="false" selection-start-line="271" selection-start-column="35" selection-end-line="271" selection-end-column="35" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#75#118#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DetermineRoots_1st.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1335">
-          <caret line="93" column="25" lean-forward="false" selection-start-line="93" selection-start-column="25" selection-end-line="93" selection-end-column="25" />
-          <folding>
-            <element signature="e#75#104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DetectReuse_1st.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="65" column="52" lean-forward="false" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DetermineRoots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state relative-caret-position="98">
+          <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ShortestPath.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state relative-caret-position="112">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BiasConstree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#13067#13713#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TransferPlanning_1st.py">
+    <entry file="file://$PROJECT_DIR$/Visualization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1167">
-          <caret line="579" column="24" lean-forward="true" selection-start-line="579" selection-start-column="24" selection-end-line="579" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#935#2035#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="477">
+          <caret line="73" column="7" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Constree.py">
+    <entry file="file://$PROJECT_DIR$/ChangeProblem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="354" column="17" lean-forward="true" selection-start-line="354" selection-start-column="17" selection-end-line="354" selection-end-column="17" />
-          <folding>
-            <element signature="e#156#182#0" expanded="true" />
-            <element signature="e#1345#1438#1" expanded="false" />
-            <element signature="e#7830#8397#0" expanded="false" />
-            <element signature="e#8456#9102#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="232" column="48" lean-forward="false" selection-start-line="232" selection-start-column="48" selection-end-line="232" selection-end-column="48" />
+        <state relative-caret-position="483">
+          <caret line="224" column="13" lean-forward="false" selection-start-line="224" selection-start-column="13" selection-end-line="224" selection-end-column="13" />
           <folding>
             <element signature="e#75#118#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EnvironmentChange.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+            <element signature="e#11472#12118#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="450">
+            <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

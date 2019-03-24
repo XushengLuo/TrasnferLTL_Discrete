@@ -1,21 +1,21 @@
-from collections import OrderedDict
-import numpy as np
-from datetime import datetime
-from networkx.classes.digraph import DiGraph
-from shapely.geometry import Point, LineString
-from networkx.algorithms import dfs_labeled_edges
-from numpy.random import uniform
-from ShortestPath import build_graph, shortest_path
 from ChangeProblem import problemFormulation
 import Buchi
+from shapely.geometry import Point, Polygon, LineString
+from networkx import DiGraph
+import numpy as np
+from collections import OrderedDict
+from random import uniform
+from networkx.algorithms import dfs_labeled_edges
 from Visualization import path_plot
+import datetime
+from ShortestPath import build_graph, shortest_path
 
 
 class tree(object):
     """ construction of prefix and suffix tree
     """
 
-    def __init__(self, ts, buchi_graph, init, final, seg, env):
+    def __init__(self, ts, buchi_graph, init, b_final, q_final, seg, env):
         """
         :param ts: transition system
         :param buchi_graph:  Buchi graph
@@ -36,10 +36,11 @@ class tree(object):
         self.group = dict()
         self.add_group(init)
 
-        self.b_final = final
+        self.b_final = b_final
+        self.q_final = q_final
         self.seg = seg
 
-        self.p = 0.9
+        self.p = 1
 
         self.env = env
 
@@ -85,58 +86,26 @@ class tree(object):
                 q_minNot2final = q_minNot2final + self.group[b_state]
         return q_min2final, q_minNot2final
 
-    def sample(self, buchi_graph, min_qb_dict, num_grid, centers):
+    def sample(self, num):
         """
         sample point from the workspace
         :return: sampled point, tuple
         """
 
-        # collects the buchi state in the tree with minimum distance to the final state
-        b_min = self.min2final(min_qb_dict, self.b_final, self.group.keys())
-        # partition of nodes
-        q_min2final, q_minNot2final = self.all2one(b_min)
-        # sample random nodes
-        p_rand = np.random.uniform(0, 1, 1)
-        q_rand = []
-        if (p_rand <= self.p and len(q_min2final) > 0) or not q_minNot2final:
-            q_rand = q_min2final[np.random.randint(0, len(q_min2final))]
-        elif p_rand > self.p or not q_min2final:
-            q_rand = q_minNot2final[np.random.randint(0, len(q_minNot2final))]
-        # find feasible succssor of buchi state in q_rand
-        Rb_q_rand = []
-        label = self.label(q_rand[0])
-        if label != '':
-            label = label + '_' + str(1)
-
-        for b_state in buchi_graph.succ[q_rand[1]]:
-            # if self.t_satisfy_b(x_label, buchi_graph.edges[(q_rand[1], b_state)]['label']):
-            if self.t_satisfy_b_truth(label, buchi_graph.edges[(q_rand[1], b_state)]['truth']):
-                Rb_q_rand.append(b_state)
-        # if empty
-        if not Rb_q_rand:
-            return Rb_q_rand, Rb_q_rand
-        # collects the buchi state in the reachable set of qb_rand with minimum distance to the final state
-        b_min = self.min2final(min_qb_dict, self.b_final, Rb_q_rand)
-
-        # collects the buchi state in the reachable set of b_min with distance to the final state equal to that of b_min - 1
-        decr_dict = dict()
-        for b_state in b_min:
-            decr = []
-            for succ in buchi_graph.succ[b_state]:
-                if min_qb_dict[(b_state, self.b_final)] - 1 == min_qb_dict[(succ, self.b_final)] or succ == self.b_final:
-                    decr.append(succ)
-            decr_dict[b_state] = decr
-        M_cand = [b_state for b_state in decr_dict.keys() if decr_dict[b_state]]
-        # if empty
-        if not M_cand:
-            return M_cand, M_cand
-        # sample b_min and b_decr
-        b_min = M_cand[np.random.randint(0, len(M_cand))]
-        b_decr = decr_dict[b_min][np.random.randint(0, len(decr_dict[b_min]))]
-
-        truth = buchi_graph.edges[(b_min, b_decr)]['truth']
-        x_rand = list(q_rand[0])
-        return self.buchi_guided_sample_by_truthvalue(truth, x_rand, num_grid, centers)
+        node = list(self.tree.nodes())[np.random.randint(0, self.tree.number_of_nodes(), 1)[0]]
+        x_rand = shortest_path(self.env, node[0], self.q_final[0][0])
+        # print(self.tree.nodes())
+        return x_rand
+        # q_rand = list(self.tree.nodes())[np.random.randint(self.tree.number_of_nodes(), size=1)[0]]
+        # x_rand = [0, 0]
+        # # parallel to one axis
+        # line = np.random.randint(2, size=1)[0]
+        # x_rand[line] = q_rand[0][line]
+        # # sample another component
+        # r = round(1 / num, 10)
+        # # x_rand[1-line] = int(np.random.uniform(0, 1, size=1)[0]/r) * r + r/2
+        # x_rand[1 - line] = round(np.random.randint(num, size=1)[0] * r + r / 2, 10)
+        # return tuple(x_rand)
 
     def buchi_guided_sample_by_truthvalue(self, truth, x_rand, num_grid, centers):
         """
@@ -176,12 +145,6 @@ class tree(object):
                         continue
                     return tuple(x_candidate)
 
-    def target(self, centers, source, tg):
-        source = source
-        tg = centers[tg.split('_')[0]]
-        destination = shortest_path(self.env, tuple(source), tg)
-        return destination
-
     def acpt_check(self, q_new, label_new, obs_check):
         """
         check the accepting state in the patg leading to q_new
@@ -189,13 +152,21 @@ class tree(object):
         :param q_new:
         :return:
         """
+
         if self.seg == 'pre':
             if 'accept' in q_new[1]:
                 self.goals.append(q_new)
         elif self.seg == 'suf':
-            if self.obs_check(self.init, q_new[0], label_new, obs_check) and self.checkTranB(q_new[1], label_new,
-                                                                                             self.init[1]):
-                self.goals.append(q_new)
+            for final in self.q_final:
+
+                label_final = self.label(final)
+                if 'o' in label_final:
+                    continue
+                if label_final != '':
+                    label_final = label_final + '_' + str(1)
+                if self.obs_check(q_new, final[0], label_final, obs_check) and self.checkTranB(q_new[1], label_new,
+                                                                                               final[1]):
+                    self.goals.append((q_new, final))
 
     def extend(self, q_new, prec_list, label_new, obs_check):
         """
@@ -205,8 +176,7 @@ class tree(object):
         :param: succ: list of successor of the root
         :return: extending the tree
         """
-        # if q_new == ((0.825, 0.425), 'T1_S1'):
-        #     print('df')
+
         added = 0
         cost = np.inf
         q_min = ()
@@ -291,20 +261,20 @@ class tree(object):
         # the line connecting two points crosses an obstacle
         for (obs, boundary) in iter(self.ts['obs'].items()):
             if LineString([Point(q_tree[0]), Point(x_new)]).intersects(boundary):
-                obs_check[(q_tree[0], x_new)] = False
-                obs_check[(x_new, q_tree[0])] = False
+                # obs_check[(q_tree[0], x_new)] = False
+                # obs_check[(x_new, q_tree[0])] = False
                 return False
 
         for (region, boundary) in iter(self.ts['region'].items()):
             if LineString([Point(q_tree[0]), Point(x_new)]).intersects(boundary) \
                     and region + '_' + str(1) != label_new \
                     and region + '_' + str(1) != self.tree.nodes[q_tree]['label']:
-                obs_check[(q_tree[0], x_new)] = False
-                obs_check[(x_new, q_tree[0])] = False
+                # obs_check[(q_tree[0], x_new)] = False
+                # obs_check[(x_new, q_tree[0])] = False
                 return False
 
-        obs_check[(q_tree[0], x_new)] = True
-        obs_check[(x_new, q_tree[0])] = True
+        # obs_check[(q_tree[0], x_new)] = True
+        # obs_check[(x_new, q_tree[0])] = True
         return True
 
     def label(self, x):
@@ -375,7 +345,7 @@ class tree(object):
         """
         paths = OrderedDict()
         for i in range(len(goals)):
-            goal = goals[i]
+            goal = goals[i][0]
             path = [goal]
             s = goal
             while s != self.init:
@@ -385,7 +355,7 @@ class tree(object):
             paths[i] = [self.path_cost(path), path]
             if self.seg == 'suf':
                 paths[i] = [self.path_cost(path) + np.abs(path[-1][0][0] - self.init[0][0]) + np.abs(
-                    path[-1][0][1] - self.init[0][1]), path + [self.init]]
+                    path[-1][0][1] - self.init[0][1]), path + [goals[i][1]]]
         return paths
 
     def path_cost(self, path):
@@ -400,10 +370,50 @@ class tree(object):
         return cost
 
 
-def construction_tree(bias_tree, buchi_graph, obs_check, min_qb_dict, num_grid, centers):
+def obs_fun(point):
+    point = Point(point)
+    for (obs1, boundary1) in iter(ts['obs'].items()):
+        if point.within(boundary1):
+            return True
+    return False
+
+
+def findbreak(path):
+    startpoint = None
+    target = None
+    b = set()
+    for k in range(len(path) - 1):
+        for (obs, boundary) in iter(ts['obs'].items()):
+            if LineString([Point(path[k][0]), Point(path[k + 1][0])]).intersects(boundary):
+                startpoint = path[k]
+                b.add(startpoint[1])
+                for point in path[k+1:]:
+                    b.add(point[1])
+                    if not obs_fun(point):
+                        target = point
+                        return startpoint, target, b
+
+    return startpoint, target, b
+
+
+# def findnext(breakpoint, path):
+#     # target = []
+#     index = path.index(breakpoint)
+#     # for point in path[index:]:
+#     #     if point[1] == breakpoint[1]:
+#     #         target.append(point)
+#     #     else:
+#     #         return target
+#     target = path[index+1]
+#     return [target]
+
+
+def construction_tree(bias_tree, buchi_graph, obs_check, num_grid):
     while bias_tree.tree.number_of_nodes() < 10000:
 
-        x_new = bias_tree.sample(buchi_graph, min_qb_dict, num_grid, centers)
+        x_new = bias_tree.sample(num_grid, )
+        # print(x_new, bias_tree.tree.nodes())
+
         if not x_new[0]:
             continue
         # sample
@@ -432,80 +442,20 @@ def construction_tree(bias_tree, buchi_graph, obs_check, min_qb_dict, num_grid, 
                 return cost_pat
 
 
-def bias_sampling_alg(buchi_graph, init, ts, centers, num_grid, obs_check, min_qb, env):
-    """
-    build multiple subtree by transferring
-    :param todo: new subtask built from the scratch
-    :param buchi_graph:
-    :param init: root for the whole formula
-    :param todo_succ: the successor of new subtask
-    :param ts:
-    :param no:
-    :param centers:
-    :param max_node: maximum number of nodes of all subtrees
-    :param subtask2path: (init, end) --> init, p, ..., p, end
-    :param starting2waypoint: init --> (init, end)
-    :param newsubtask2subtask_p: new subtask need to be planned --> new subtask noneed
-    :return:
-    """
-    start = datetime.now()
-    bias_tree = tree(ts, buchi_graph, init,
-                     buchi_graph.graph['accept'][np.random.randint(0, len(buchi_graph.graph['accept']))], 'pre', env)
-    cost_path_pre = construction_tree(bias_tree, buchi_graph, obs_check, min_qb, num_grid, centers)
-    pre_time = (datetime.now() - start).total_seconds()
-    start = datetime.now()
-    opt_cost = (np.inf, np.inf)
-    opt_path_pre = []
-    opt_path_suf = []
+def envchange(orig_path, buchi_graph, env, obs):
+    startpoint, target, b = findbreak(orig_path)
+    if not target:
+        return None
 
-    for i in range(1):
-        # goal product state
-        goal = bias_tree.goals[i]
-        tree_suf = tree(ts, buchi_graph, goal, goal[1], 'suf', env)
-
-        label_new = bias_tree.label(goal)
-        if 'o' in label_new:
-            continue
-        if label_new != '':
-            label_new = label_new + '_' + str(1)
-        if tree_suf.obs_check(tree_suf.init, tree_suf.init[0], label_new, obs_check) and tree_suf.checkTranB(
-                tree_suf.init[1], label_new,
-                tree_suf.init[1]):
-            opt_path_pre = cost_path_pre[i][1]  # plan of [(position, buchi)]
-            return pre_time, cost_path_pre[i][0], opt_path_pre
-
-        # update accepting buchi state
-        # buchi_graph.graph['accept'] = goal[1]
-        # construct suffix tree
-        cost_path_suf_cand = construction_tree(tree_suf, buchi_graph, obs_check, min_qb, num_grid, centers)
-
-        # print('--------------suffix path for {0}-th goal (of {1} in total)---------------------'.format(i, len(tree_pre.goals)))
-        # print('{0}-th goal: {1} accepting goals found'.format(i, len(tree_suf.goals)))
-        # couldn't find the path
-        try:
-            # order according to cost
-            cost_path_suf_cand = OrderedDict(sorted(cost_path_suf_cand.items(), key=lambda x: x[1][0]))
-            mincost = list(cost_path_suf_cand.keys())[0]
-        except IndexError:
-            del cost_path_pre[i]
-            # print('delete {0}-th item in cost_path_pre, {1} left'.format(i, len(cost_path_pre)))
-            continue
-        cost_path_suf = cost_path_suf_cand[mincost]
-
-        if cost_path_pre[i][0] + cost_path_suf[0] < opt_cost[0] + opt_cost[1]:
-            opt_path_pre = cost_path_pre[i][1]  # plan of [(position, buchi)]
-            opt_path_suf = cost_path_suf[1]
-            opt_cost = cost_path_pre[i][0] + cost_path_suf[0]  # optimal cost (pre_cost, suf_cost)
-
-        suf_time = (datetime.now() - start).total_seconds()
-        return pre_time + suf_time, opt_cost, opt_path_pre + opt_path_suf
-
-        # path_plot(opt_path_pre+opt_path_suf, regions, obs, num_grid)
-        # path_plot(opt_path_,suf, regions, obs, num_grid)
+    new_buchi_graph = buchi_graph.subgraph(b)
+    # print(startpoint, target[0][1], target)
+    T = tree(ts, new_buchi_graph, startpoint,  target[1], [target], 'suf', env)
+    seg_path = construction_tree(T, new_buchi_graph, dict(), num_grid)
+    return seg_path
 
 
 workspace, regions, centers, obs, init_state, uni_cost, formula, \
-formula_comp, exclusion, num_grid, path = problemFormulation(1).Formulation()
+formula_comp, exclusion, num_grid, orig_path = problemFormulation(1).Formulation()
 ts = {'workspace': workspace, 'region': regions, 'obs': obs, 'uni_cost': uni_cost}
 
 buchi = Buchi.buchi_graph(formula, formula_comp, exclusion)
@@ -513,27 +463,26 @@ buchi.formulaParser()
 buchi.execLtl2ba()
 _ = buchi.buchiGraph()
 buchi.DelInfesEdge(len(init_state))
-min_qb = buchi.MinLen()
-buchi.FeasAcpt(min_qb)
 buchi_graph = buchi.buchi_graph
 
-t = tree(ts, buchi_graph, (init_state, buchi_graph.graph['init'][0]), '', '', [])
-env = build_graph(num_grid, t)
 
-time = []
-cost = []
-opt_path = []
-opt_cost = np.inf
-for i in range(10):
-    tm, c, p = bias_sampling_alg(buchi_graph, (init_state, buchi_graph.graph['init'][0]), ts, centers, num_grid, dict(),
-                                 min_qb, env)
-    # print(tm, c)
-    time.append(tm)
-    cost.append(c)
-    if c < opt_cost:
-        opt_cost = c
-        opt_path = p
-# for p in opt_path:
-#     print(t.label(p[0]), ' ', end='')
-print(np.mean(time), )
-# path_plot(opt_path, regions, obs, num_grid)
+start = datetime.datetime.now()
+new_path = [((0.025, 0.025), 'T0_init')]
+e = orig_path.index(new_path[-1])
+t = tree(ts, buchi_graph, (init_state, buchi_graph.graph['init'][0]), '', '', '', [])
+env = build_graph(num_grid, t)
+while True:
+    seg_path = envchange(orig_path[e:], buchi_graph, env, obs)
+    if seg_path:
+        s = orig_path[e:].index(new_path[-1])
+        end1 = orig_path[e:].index(seg_path[0][1][0])
+        end = orig_path[e+end1:].index(seg_path[0][1][-1])
+        new_path = new_path + orig_path[e:][s+1:end1+1] + seg_path[0][1][1:]
+        e += end+end1
+    else:
+        new_path += orig_path[e:]
+        break
+
+time = (datetime.datetime.now() - start).total_seconds()
+print(time, '',  end='')
+# path_plot(new_path, regions, obs, num_grid)

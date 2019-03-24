@@ -65,6 +65,7 @@ def hoftask(init, buchi_graph, regions, r):
     succ_dict = dict()
     succ_dict[(init_node, '0')] = {buchi_graph.graph['init'][0]}
 
+    task_group = dict()
     while open_set:
         curr = open_set.pop(0)
         # buchi state that curr corresponds to
@@ -96,7 +97,10 @@ def hoftask(init, buchi_graph, regions, r):
                             # if curr[0] != cand and not match(h_task, curr[0], cand):
                             if not match(h_task, curr[0], cand):
                                 h_task.add_edge(curr[0], cand)
-
+                                try:
+                                    task_group[curr[0].x].add((curr[0], cand))
+                                except KeyError:
+                                    task_group[curr[0].x] = {(curr[0], cand)}
                             try:
                                 succ_dict[(cand, edge_label)].add(q_b)
                             except KeyError:
@@ -108,4 +112,4 @@ def hoftask(init, buchi_graph, regions, r):
 
             explore_set.append(curr)
 
-    return h_task
+    return h_task, task_group

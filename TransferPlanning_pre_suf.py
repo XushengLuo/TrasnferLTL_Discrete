@@ -150,7 +150,7 @@ def sweep_subtask(sample_list, starting2waypoint, subtask2path, subtree):
                 subtree.used.add(ending)
 
 
-def update_cost_acc(multi_tree, subtree, succ, changed, index2node_root, root2index, root_pred2index_node):
+def update_cost_acc(multi_tree, subtree, succ, index2node_root, root2index, root_pred2index_node):
     """
     update cost and acc of all children node in all subtrees
     :param multi_tree:
@@ -170,20 +170,13 @@ def update_cost_acc(multi_tree, subtree, succ, changed, index2node_root, root2in
             index = to_update.pop(0)
             to_update += [root2index[r[1]] for r in index2node_root[index]]
             root = multi_tree[index].init
-            multi_tree[index].tree.nodes[root]['acc'] = set(multi_tree[root_pred2index_node[root][0]].tree.nodes[root][
-                                                                'acc'])
             delta_c = multi_tree[index].tree.nodes[root]['cost'] - \
                       multi_tree[root_pred2index_node[root][0]].tree.nodes[root]['cost']
             for nodes in multi_tree[index].tree.nodes():
                 multi_tree[index].tree.nodes[nodes]['cost'] -= delta_c
 
-            if changed:
-                for u, v, d in dfs_labeled_edges(multi_tree[index].tree, source=root):
-                    if d == 'forward':
-                        multi_tree[index].tree.nodes[v]['acc'] = set(multi_tree[index].acpt_check(u, v)[0])
 
-
-def search_goal(multitree, init, subtree, q_new, label_new, acc, root_pred2index_node, root2index, obs_check):
+def search_goal(init, subtree, q_new, label_new, obs_check):
     """
 
     :param multitree:
@@ -197,39 +190,17 @@ def search_goal(multitree, init, subtree, q_new, label_new, acc, root_pred2index
     :return:
     """
     # print(subtree.tree.nodes[q_new]['cost'])
-    if subtree.tree.nodes[q_new]['cost'] < subtree.base:
-
-        currtree = multitree[root2index[subtree.init]]
-        path = [root2index[currtree.init]] + currtree.findpath([q_new])[0][1]
-        while path[1] != init:
-            index, parentnode = root_pred2index_node[currtree.init]
-            currtree = multitree[index]
-            path = [index] + currtree.findpath([parentnode])[0][1] + path
-        # path = currtree.findpath([q_new])[0][1] + [root2index[currtree.init]]
-        # while path[0] != init:
-        #     index, parentnode = root_pred2index_node[currtree.init]
-        #     currtree = multitree[index]
-        #     path = currtree.findpath([parentnode])[0][1] + [index] + path
-
-        index = root2index[subtree.init]  # initialize
-        currtree = multitree[index]
-        for ac in acc:
-            # connect to path leading to accepting state, including accepting state
-            try:
-                ac_index = path.index(ac)
-            except ValueError:
-                # path has changed leading to current node
-                continue
-            for point in path[:ac_index+1]:  # [::-1]:
-                if isinstance(point, int):
-                    index = point
-                    currtree = multitree[index]
-                    continue
-                # point in currtree
-                if currtree.obs_check(point, q_new[0], label_new, obs_check) \
-                        and currtree.checkTranB(q_new[1], label_new, point[1]):
-                    # print('+1', np.sum([t.tree.number_of_nodes() for t in multitree]))
-                    subtree.goals.append((q_new, point, ac))  # endpoint, middle point, accepting point
+    if subtree.tree.nodes[q_new]['cost'] > subtree.base:
+        return
+    if subtree.seg == 'pre':
+        if 'accept' in q_new[1]:
+            subtree.goals.append(q_new)
+    elif subtree.seg == 'suf':
+        label = subtree.label(init)
+        init_label = label + '_' + str(1)
+        if subtree.obs_check(q_new, init[0], init_label, obs_check) and subtree.checkTranB(q_new[1], label_new,
+                                                                                         init[1]):
+            subtree.goals.append(q_new)
 
 
 def find_path(multitree, init, subtree, goal, root_pred2index_node, root2index):
@@ -246,19 +217,22 @@ def find_path(multitree, init, subtree, goal, root_pred2index_node, root2index):
     :return:
     """
 
-    currtree = multitree[root2index[subtree.init]]
-    path = currtree.findpath([goal[0]])[0][1]
-    while path[0] != init:
-        index, parentnode = root_pred2index_node[currtree.init]
-        # print(index)
-        currtree = multitree[index]
-        path = currtree.findpath([parentnode])[0][1] + path
-    try:
-        path = path + path[path.index(goal[1]):path.index(goal[2]) + 1]
-    except ValueError:
-        # print('empty')
-        return []
-    return path
+    paths = OrderedDict()
+    for i in range(len(goal)):
+        currtree = multitree[root2index[subtree.init]]
+        path = currtree.findpath([goal[i]])[0][1]
+        while path[0] != init:
+            index, parentnode = root_pred2index_node[currtree.init]
+            # print(index)
+            currtree = multitree[index]
+            path = currtree.findpath([parentnode])[0][1] + path
+
+        paths[i] = [path_cost(path), path]
+        if subtree.seg == 'suf':
+            paths[i] = [path_cost(path) + np.abs(path[-1][0][0] - init[0][0]) + np.abs(
+                path[-1][0][1] - init[0][1]), path + [init]]
+
+    return paths
 
 
 def construction_tree(subtree, x_new, label_new, buchi_graph, centers, todo_succ, flag, connect, subtask2path,
@@ -301,14 +275,16 @@ def construction_tree(subtree, x_new, label_new, buchi_graph, centers, todo_succ
             # succ = set(todo_succ.keys())
             # succ.remove(subtree.init)
 
-            succ = set(todo_succ[subtree.init])
+            succ = list(todo_succ.keys())  # set(todo_succ[subtree.init])
 
             added = subtree.extend(q_new, prec, succ, label_new)
         # rewire
         if added:  # q_new in subtree.tree.nodes():
             # print(q_new)
-            search_goal(multi_tree, init, subtree, q_new, label_new, subtree.tree.nodes[q_new]['acc'],
-                        root_pred2index_node, root2index, obs_check)
+            search_goal(init, subtree, q_new, label_new, obs_check)
+            if subtree.found:
+                return
+
             # only rewire within the subtree, it may affect the node which is a root
             succ = subtree.succ(q_new, label_new, obs_check)
             subtree.rewire(q_new, succ)
@@ -378,7 +354,6 @@ def construction_tree_connect_root(subtree, q_new, label, centers, todo_succ, co
                     subtree.tree.remove_edge(list(subtree.tree.pred[succ].keys())[0], succ)
                     subtree.tree.add_edge(q_new, succ)
                     subtree.tree.nodes[succ]['cost'] = c  # two kinds of succ, one in tree, one the root
-                    subtree.tree.nodes[succ]['acc'] = set(acc)
 
                     # update lib
                     path = path_root(subtree, curr, succ)
@@ -396,7 +371,7 @@ def construction_tree_connect_root(subtree, q_new, label, centers, todo_succ, co
                         index2node_root[root2index[subtree.init]].add((q_new, succ))
                         root_pred2index_node[succ] = [root2index[subtree.init], q_new]
                         # update the cost and acc of curr and all nodes in the subtrees of curr
-                        update_cost_acc(multi_tree, subtree, succ, changed, index2node_root, root2index,
+                        update_cost_acc(multi_tree, subtree, succ, index2node_root, root2index,
                                         root_pred2index_node)
                         # !!!! future work: update subtasks newly added to the library periodically !!!!
 
@@ -422,7 +397,7 @@ def construction_tree_connect_root(subtree, q_new, label, centers, todo_succ, co
                     root_pred2index_node[succ] = [root2index[subtree.init], q_new]
 
                     # update the cost and acc of curr and all nodes in the subtree of curr
-                    update_cost_acc(multi_tree, subtree, succ, changed, index2node_root, root2index,
+                    update_cost_acc(multi_tree, subtree, succ, index2node_root, root2index,
                                     root_pred2index_node)
 
                 else:
@@ -437,7 +412,7 @@ def construction_tree_connect_root(subtree, q_new, label, centers, todo_succ, co
                         index2node_root[root2index[subtree.init]].add((q_new, succ))
                         root_pred2index_node[succ] = [root2index[subtree.init], q_new]
                         # update the cost and acc of curr and all nodes in the subtree of curr
-                        update_cost_acc(multi_tree, subtree, succ, changed, index2node_root, root2index,
+                        update_cost_acc(multi_tree, subtree, succ, index2node_root, root2index,
                                         root_pred2index_node)
 
 
@@ -471,8 +446,9 @@ def construction_tree_connect_sample(subtree, sample_list, multi_tree, init, roo
             subtree.tree.add_node(cand, cost=cost, label=label_cand)
             subtree.tree.nodes[cand]['acc'] = set(subtree.acpt_check(sample_list[k - 1], cand)[0])
             subtree.tree.add_edge(sample_list[k - 1], cand)
-            search_goal(multi_tree, init, subtree, cand, label_cand, subtree.tree.nodes[cand]['acc'],
-                        root_pred2index_node, root2index, obs_check)
+            search_goal(init, subtree, cand, label_cand, obs_check)
+            if subtree.found:
+                return
 
         else:
             # rewire-like
@@ -481,16 +457,13 @@ def construction_tree_connect_sample(subtree, sample_list, multi_tree, init, roo
             if delta_c > 0:
                 subtree.tree.remove_edge(list(subtree.tree.pred[cand].keys())[0], cand)
                 subtree.tree.add_edge(sample_list[k - 1], cand)
-                acc, changed = subtree.acpt_check(sample_list[k - 1], cand)
-                subtree.tree.nodes[cand]['acc'] = set(acc)
                 edges = dfs_labeled_edges(subtree.tree, source=cand)
                 for u, v, d in edges:
                     if d == 'forward':
                         # update cost
                         subtree.tree.nodes[v]['cost'] = subtree.tree.nodes[v]['cost'] - delta_c
                         # update accept state
-                        if changed:
-                            subtree.tree.nodes[v]['acc'] = set(subtree.acpt_check(u, v)[0])
+
 
                             # those sampled point are more likely to be specific to one task, and the endpoint of the subpath may not
                             # directly connect to other roots since two regions can not be connected via a straight line
@@ -505,7 +478,7 @@ def construction_tree_connect_sample(subtree, sample_list, multi_tree, init, roo
 
 
 def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, subtask2path, starting2waypoint,
-                         newsubtask2subtask_p, acpt, num_grid, obs_check):
+                         newsubtask2subtask_p, acpt, num_grid, obs_check, seg):
     """
     build multiple subtree by transferring
     :param todo: new subtask built from the scratch
@@ -535,7 +508,7 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
 
     # todo_succ.values include key waypoint but not new root
     for td in todo_succ.keys():
-        multi_tree.append(tree(ts, buchi_graph, td, base))
+        multi_tree.append(tree(ts, buchi_graph, td, base, seg))
         if init == td:
             # the base for the init root is 0
             init_root = True
@@ -545,7 +518,7 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
         root_index += 1
 
     if not init_root:
-        multi_tree.append(tree(ts, buchi_graph, init, base))
+        multi_tree.append(tree(ts, buchi_graph, init, base, seg))
         root2index[init] = root_index
         root_index += 1
 
@@ -560,7 +533,7 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
         # todo_succ[ac] = set()
 
     index2node_root = {i: set() for i in range(len(multi_tree))}  # index -->  node and successive root
-    print('number of subtress        : %8d' % len(multi_tree))
+    # print('number of subtress        : %8d' % len(multi_tree))
 
     c = 0
     k = 0
@@ -579,6 +552,8 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
                                                  root_pred2index_node, root2index, centers,
                                                  todo_succ, connect, starting2waypoint, subtask2path,
                                                  newsubtask2subtask_p, index2node_root, obs_check)
+                if multi_tree[i].found:
+                    return find_path(multi_tree, init, multi_tree[i], multi_tree[i].goals, root_pred2index_node, root2index)
 
     while np.sum([t.tree.number_of_nodes() for t in multi_tree]) < max_node:
 
@@ -611,6 +586,8 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
                                                 connect,
                                                 subtask2path, starting2waypoint, newsubtask2subtask_p, root2index,
                                                 root_pred2index_node, index2node_root, multi_tree, init, [], obs_check)
+                if multi_tree[i].found:
+                    return find_path(multi_tree, init, multi_tree[i], multi_tree[i].goals, root_pred2index_node, root2index)
             if sample_list:
                 # print(sample_list)
                 for sample in sample_list:
@@ -619,24 +596,9 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
                                                      root_pred2index_node, root2index, centers,
                                                      todo_succ, connect, starting2waypoint, subtask2path,
                                                      newsubtask2subtask_p, index2node_root, obs_check)
+                    if multi_tree[i].found:
+                        return find_path(multi_tree, init, multi_tree[i], multi_tree[i].goals, root_pred2index_node, root2index)
 
-        if np.sum([len(t.goals) for t in multi_tree]) > threshold:
-            break
-
-
-            # for s in range(len(sample)-1):
-            #     sample_list += construction_tree(multi_tree[i], sample[s+1][0], buchi_graph, centers, todo_succ, 0, connect,
-            #                                 subtask2path, starting2waypoint, newsubtask2subtask_p, root2index,
-            #                                 root_pred2index_node, index2node_root, multi_tree, init, [sample[s]])
-
-            # roots connected to init root
-            # for root in root2index.keys():
-            #     index = [root2index[nr[1]] for nr in index2node_root[root2index[root]]]
-            #     if index:
-            #         print(root2index[init])
-            #         print(root2index[root], index)
-            #         print(root2index[root], [root_pred2index_node[multi_tree[i].init][0] for i in index])
-            # print('===================')
     time2 = (datetime.now() - now).total_seconds()
     # print(time2, np.sum([len(v) for k, v in todo_succ.items()]), len(connect))
     # for c in connect:
@@ -665,7 +627,7 @@ def transfer_multi_trees(buchi_graph, init, todo_succ, ts, centers, max_node, su
                 optpath = path
             k += 1
     # print(optpath)
-    # for p in optpath:
-    #     print(multi_tree[0].label(p[0]), ' ', end='')
+    for p in optpath:
+        print(multi_tree[0].label(p[0]), ' ', end='')
     # print(time1, time2, num_path_seq, num_path_par)
     return optpath, optcost
